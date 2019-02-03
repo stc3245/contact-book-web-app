@@ -1,5 +1,6 @@
 var qs = location.search;
 var stuff = qs.split("=");
+
 var ID = stuff[1].slice(0,3);
 if (ID[0] == 0) {
 	ID = 0;
@@ -77,19 +78,22 @@ $("#Cancel-btn").on("click", function () {
 		});
 });
 $("#save-btn").on("click", function () {
+	var AddressLine1 =
+	var City =
+	var
 	var saveContactInfo = {
-  "Id": ID,
-  "AddressLine1":  document.getElementById("AddressLine1").value,
-  "AddressLine2": document.getElementById("AddressLine2").value,
-  "AddressLine3": document.getElementById("AddressLine3").value,
-  "City": document.getElementById("city").value,
-  "StateCD": document.getElementById("statecd").value,
-  "ZipCode": document.getElementById("zipcode").value,
-  "CountryCode": 1,
-  "UserId": contactID,
-  "AddressTypeId": document.getElementById("dropdown").value ,
-  "AddressTypeName": document.getElementById("dropdown").text
-}
+	  "Id": ID,
+	  "AddressLine1":  document.getElementById("AddressLine1").value,
+	  "AddressLine2": document.getElementById("AddressLine2").value,
+	  "AddressLine3": document.getElementById("AddressLine3").value,
+	  "City": document.getElementById("city").value,
+	  "StateCD": document.getElementById("statecd").value,
+	  "ZipCode": document.getElementById("zipcode").value,
+	  "CountryCode": 1,
+	  "UserId": contactID,
+	  "AddressTypeId": document.getElementById("dropdown").value ,
+	  "AddressTypeName": document.getElementById("dropdown").text
+	}
 	var myJSON = JSON.stringify(saveContactInfo);
 
 	$.ajax({

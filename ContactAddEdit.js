@@ -59,11 +59,21 @@ $("#Cancel-btn").on("click", function () {
 });
 
 $("#addcontactinfo-btn").on("click", function () {
-	editContactInfo(0);
+	if(userID == 0){
+		alert("You must first save a contact before adding more contact information");
+	}
+	else{
+		editContactInfo(0);
+	}
 });
 
 $("#addcontactaddress-btn").on("click", function () {
-	editContactAddress(0);
+	if(userID == 0){
+		alert("You must first save a contact before adding an address");
+	}
+	else{
+		editContactAddress(0);
+	}
 });
 
 function editContactInfo(id){
@@ -111,30 +121,62 @@ function deleteContactAddress(Addressid){
 }
 
 $("#save-btn").on("click", function () {
-	var saveContact = {
-		"Id": userID,
-		"FirstName": document.getElementById("FirstName").value,
-		"LastName": document.getElementById("LastName").value,
-		"DOB": document.getElementById("DOB").value
-	}
-	var myJSON = JSON.stringify(saveContact);
+	var firstName = document.getElementById("FirstName").value;
+	var lastName = document.getElementById("LastName").value;
+	var DOB = document.getElementById("DOB").value
 
-	$.ajax({
-		type: 'POST',
-		url: 'http://contactbookapi.sihs.dev2.edsiohio.com/api/contact/ContactAddEdit',
-		data: myJSON,
-		contentType: 'application/json',
-		dataType: 'JSON',
-		success: function(resultData) {
-			alert("Contact has been saved.");
-			window.location.href="ContactSearch.html";
-		},
-		error: function(resultData) {
-			alert("An error has occured.");
+	var date_regex = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/;
+	var isValidDate = date_regex.test(DOB);
+
+	if (!firstName || !lastName || !DOB) {
+		alert("Please fill in all text fields before proceeding")
+	}
+	else if(!isValidDate){
+		alert("Please fill in a valid date (format: MM/DD/YYYY)")
+	}
+	else{
+		var saveContact = {
+			"Id": userID,
+			"FirstName": firstName,
+			"LastName": lastName,
+			"DOB": DOB
 		}
-	});
+		var myJSON = JSON.stringify(saveContact);
+
+		$.ajax({
+			type: 'POST',
+			url: 'http://contactbookapi.sihs.dev2.edsiohio.com/api/contact/ContactAddEdit',
+			data: myJSON,
+			contentType: 'application/json',
+			dataType: 'JSON',
+			success: function(resultData) {
+				alert("Contact has been saved.");
+				window.location.href="ContactSearch.html";
+			},
+			error: function(resultData) {
+				alert("An error has occured.");
+			}
+		});
+	}
 });
 
+function getDate(){
+	var today = new Date();
+	var dd = today.getDate();
+	var mm = today.getMonth() + 1; //January is 0!
+	var yyyy = today.getFullYear();
+
+	if (dd < 10) {
+	  dd = '0' + dd;
+	}
+
+	if (mm < 10) {
+	  mm = '0' + mm;
+	}
+
+	today = mm + '/' + dd + '/' + yyyy;
+	return today;
+}
 
 function displayData(data) {
 	$("#text-boxes")
@@ -152,7 +194,7 @@ function displayBoxes(id){
 		'<div class = "row" style = "text-align: center;">'+
 			'<div class="col-md-4">First Name: <input type = "text" id = "FirstName"></div>'+
 			'<div class="col-md-4">Last Name: <input type = "text" id = "LastName"></div>'+
-			'<div class="col-md-4"> Date of Birth: <input type = "text" id = "DOB"></div>'+
+			'<div class="col-md-4"> Date of Birth: <input type = "text" value = '+ getDate() +' id = "DOB"></div>'+
 		'</div>'
 	)
 }
