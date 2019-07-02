@@ -184,9 +184,9 @@ function displayData(data) {
 	$("#text-boxes")
 		.append(
 		'<div class = "row" style = "text-align: center;">'+
-			'<div class="col-md-4">First Name: <input type = "text" id = "FirstName" value = " ' + data.FirstName + '"></div>'+
-			'<div class="col-md-4">Last Name: <input type = "text" id = "LastName" value =" ' + data.LastName + '"></div>'+
-			'<div class="col-md-4"> Date of Birth: <input type = "text" id = "DOB" value =" ' + data.DOB + '"></div>'+
+			'<div class="col-md-4">First Name: <input type = "text" id = "FirstName" value = "'+ data.FirstName +'"></div>'+
+			'<div class="col-md-4">Last Name: <input type = "text" id = "LastName" value ="'+ data.LastName +'"></div>'+
+			'<div class="col-md-4"> Date of Birth: <input type = "text" id = "DOB" value ="'+ data.DOB +'"></div>'+
 		'</div>'
 	)
 }
