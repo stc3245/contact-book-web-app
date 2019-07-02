@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Edit Address</title>
+        <title>Edit Contact Info</title>
 
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
         <!-- Our CSS -->
-        <link rel="stylesheet" href="site.css">
+        <link rel="stylesheet" href="../style/site.css">
 
         <!-- Include jQuery first -->
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
@@ -23,28 +23,22 @@
 
     </head>
     <body>
-
-        <div class="container">
-            <h1 style = "text-align: center;">Edit Address Page</h1>
-            <hr/>
-            <div id = "text-boxes">
-
+		<div class="container">
+			<h1 style = "text-align: center;">Contact Info Edit</h1>
+			<hr/>
+			<div id = "text-boxes" style = "text-align: center;">
 			</div>
-
-			<div class="row" style="text-align: center;">
-				<div class="col-md-1">
-					<br><br><br>
-					<button id="save-btn" class="btn btn-primary">Save</button>
-				</div>
-				<div class="col-md-1">
-					<br><br><br>
-					<button id="Cancel-btn" class="btn btn-primary">Cancel</button>
-				</div>
+		</div>
+		<div class="row" style="text-align: center;">
+			<div class="col-md-1">
+				<button id="save-btn" class="btn btn-primary">Save</button>
 			</div>
-        </div>
+			<div class="col-md-1">
+				<button id="Cancel-btn" class="btn btn-primary">Cancel</button>
+			</div>
+		</div>
 
-        <!-- Then include our Javascript -->
-        <script type="text/javascript" src="ContactAddressAddEdit.js"></script>
-
+		<!-- Then include our Javascript -->
+		<script type="text/javascript" src="../javascript/ContactInfoAddEdit.js"></script>
     </body>
 </html>

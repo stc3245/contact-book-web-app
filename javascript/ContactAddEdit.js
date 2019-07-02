@@ -95,7 +95,7 @@ function deleteContactInfo(contactInfoid){
         success: function(resultData) {
             alert("Contact Info deleted!");
 						console.log(contactInfoid);
-							window.location.href="ContactAddEdit.html?id=" + userID;
+						window.location.href="ContactAddEdit.html?id=" + userID;
         },
         error: function(resultData) {
             alert("An error has occured.");
@@ -111,6 +111,8 @@ function deleteContactAddress(Addressid){
         dataType: "JSON",
         success: function(resultData) {
             alert("Address deleted!");
+						window.location.href="ContactAddEdit.html?id=" + userID;
+
 
 			console.log(Addressid);
         },

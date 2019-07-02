@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
-    
+
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Edit Page</title>
-        
+        <title>Edit Contact</title>
+
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -13,81 +13,77 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
         <!-- Our CSS -->
-        <link rel="stylesheet" href="site.css">
-        
+        <link rel="stylesheet" href="../style/site.css">
+
         <!-- Include jQuery first -->
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-        
+
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-        
+
     </head>
     <body>
-                
+
         <div class="container">
             <h1 style = "text-align: center;">Edit Page</h1>
             <hr/>
-            <div class="row" style="text-align: center;">
-				<div class="col-md-6">
-					Fist Name:
-					<input type = "text" id = "Name">
+            <div id = "text-boxes">
+
+			</div>
+			<div class="row" style = "text-align: center;">
+				<br><br>
+				<div class= "col-md-4">
+					Info Description
 				</div>
-				<div class="col-md-6">
-					Last Name:
-					<input type = "text" id = "Phone">
-					<br><br><br>
+				<div class= "col-md-4">
+					Info Type
+				</div>
+				<div class= "col-md-4">
+
+					<br><br>
+				</div>
+				<div id ="contact-info">
+
 				</div>
 			</div>
-			<div class="row" style="text-align: center;">
-				<div class="col-md-6">
-					Phone Number:
-					<input type = "text" id = "Phone">
+			<div class="row" style = "text-align: center;">
+				<br><br>
+				<div class= "col-md-4">
+					Address Description
 				</div>
-				<div class="col-md-6">
-					Email:
-					<input type = "text" id = "Email">
-					<br><br><br>
+				<div class= "col-md-4">
+					Address Type
 				</div>
-			</div>
-			<div class="row" style="text-align: center;">
-				<div class="col-md-2">
-					Address 1:
-					<input type = "text" id = "Address1">
+				<div class= "col-md-4">
+
+					<br><br>
 				</div>
-				<div class="col-md-2">
-					Address 2:
-					<input type = "text" id = "Address2">
-				</div>
-				<div class="col-md-2">
-					Country:
-					<input type = "text" id = "Country">
-				</div>
-				<div class="col-md-2">
-					State:
-					<input type = "text" id = "State">
-				</div>
-				<div class="col-md-2">
-					City:
-					<input type = "text" id = "City">
-				</div>
-				<div>
-					Zip Code:
-					<input type = "text" id = "Zip">
-					<br><br><br><br><br>
+				<div id = "address-info">
+
 				</div>
 			</div>
 			<div class="row" style="text-align: center;">
 				<div class="col-md-1">
+					<br><br><br>
 					<button id="save-btn" class="btn btn-primary">Save</button>
 				</div>
+				<div class="col-md-2">
+					<br><br><br>
+					<button id="addcontactinfo-btn" class="btn btn-primary">Add Contact Info</button>
+				</div>
+				<div class="col-md-2">
+					<br><br><br>
+					<button id="addcontactaddress-btn" class="btn btn-primary">Add Address</button>
+				</div>
 				<div class="col-md-1">
+					<br><br><br>
 					<button id="Cancel-btn" class="btn btn-primary">Cancel</button>
 				</div>
 			</div>
         </div>
-        
+
         <!-- Then include our Javascript -->
-        <script type="text/javascript" src="ContactBookApp.js"></script>
-        
+        <script type="text/javascript" src="../javascript/ContactAddEdit.js"></script>
+
     </body>
 </html>

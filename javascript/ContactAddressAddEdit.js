@@ -40,7 +40,7 @@ function displayBoxes(id){
 			'<div class="col-md-3">City: <input type = "text" id = "city"></div>'+
 			'<div class="col-md-3">State: <input type = "text" id = "statecd"></div>'+
 			'<div class="col-md-3">Zip: <input type = "text" id = "zipcode"></div>'+
-			'<div class="col-md-3">Address Type:<select id = "dropdown"> <option value="1">Work</option> <option value="2">Home</option><option value="3">Vacation</option></select></div>'+
+			'<div class="col-md-3">Address Type:<select id = "dropdown"> <option value="1">Home</option> <option value="2">Work</option><option value="3">Vacation</option></select></div>'+
 		'</div>'
 	)
 }
@@ -56,7 +56,7 @@ function displayAddressData (data) {
 			'<div class="col-md-3">City: <input type = "text" id = "city" value ="' + data.City + '"></div>'+
 			'<div class="col-md-3">State Abbrev.: <input type = "text" id = "statecd" value ="' + data.StateCD + '"></div>'+
 			'<div class="col-md-3">Zip: <input type = "text" id = "zipcode" value ="' + data.ZipCode + '"></div>'+
-			'<div class="col-md-3">Type: <input type = "text" id = "type" value ="' + data.AddressTypeName + '"></div>'+
+			'<div class="col-md-3">Address Type:<select id = "dropdown"> <option value="1">Home</option> <option value="2">Work</option><option value="3">Vacation</option></select></div>'+
 		'</div>'
 	)
 }
@@ -78,9 +78,6 @@ $("#Cancel-btn").on("click", function () {
 		});
 });
 $("#save-btn").on("click", function () {
-	var AddressLine1 =
-	var City =
-	var
 	var saveContactInfo = {
 	  "Id": ID,
 	  "AddressLine1":  document.getElementById("AddressLine1").value,

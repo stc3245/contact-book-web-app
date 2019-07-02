@@ -36,8 +36,8 @@ function displayContactInfoData (data) {
 	$("#text-boxes")
 		.append(
 		'<div class = "row" style = "text-align: center;">'+
-			'<div class="col-md-6">Text: <input type = "text" id = "ContactInfoText" value ="' + data.Text + '"></div>'+
-			'<div class="col-md-6">Type Name: <input type = "text" id = "ContactInfoType" value ="' + data.TypeName + '"></div>'+
+			'<div class="col-md-6">Text: <input type = "text" id = "Text" value ="' + data.Text + '"></div>'+
+			'<div class="col-md-6">Type: <select id = "dropdown"> <option value="1">Cell Phone</option> <option value="2">Home Phone</option><option value="3"> Work Phone</option><option value="4">Work Email</option><option value="5">Personal Email</option></select>'+
 		'</div>'
 	)
 }
