@@ -123,5 +123,5 @@ $("#save-btn").on("click", function () {
 	});
 });
 function returnToAddEdit(data){
-	window.location.href="ContactAddEdit.html?id=" + contactID;
+	window.location.href="views/ContactAddEdit.html?id=" + contactID;
 }

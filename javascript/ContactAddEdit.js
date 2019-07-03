@@ -58,7 +58,7 @@ $(document).ready(function() {
 
 // Defines cancel button behavior which returns to contact search page
 $("#Cancel-btn").on("click", function () {
-	window.location.href="ContactSearch.html";
+	window.location.href="views/ContactSearch.html";
 });
 
 // Defines add contact info behavior which redirects if there is a contact id
@@ -83,12 +83,12 @@ $("#addcontactaddress-btn").on("click", function () {
 
 // Defines edit contact info behavior which redirects to edit page
 function editContactInfo(id){
-	window.location.href="ContactInfoAddEdit.html?id=" + id + "?userID="+ userID;
+	window.location.href="views/ContactInfoAddEdit.html?id=" + id + "?userID="+ userID;
 }
 
 // Defines edit addres behavior which redirects to edit page
 function editContactAddress(id){
-	window.location.href="ContactAddressAddEdit.html?id=" + id + "?userID="+userID;
+	window.location.href="views/ContactAddressAddEdit.html?id=" + id + "?userID="+userID;
 }
 
 //Makes POST call to server that deletes the contact info of the selected id
@@ -102,7 +102,7 @@ function deleteContactInfo(contactInfoid){
         dataType: "JSON",
         success: function(resultData) {
             alert("Contact Info deleted!");
-						window.location.href="ContactAddEdit.html?id=" + userID;
+						window.location.href="views/ContactAddEdit.html?id=" + userID;
         },
         error: function(resultData) {
             alert("An error has occured.");
@@ -120,7 +120,7 @@ function deleteContactAddress(Addressid){
         dataType: "JSON",
         success: function(resultData) {
             alert("Address deleted!");
-						window.location.href="ContactAddEdit.html?id=" + userID;
+						window.location.href="views/ContactAddEdit.html?id=" + userID;
         },
         error: function(resultData) {
             alert("An error has occured.");
@@ -163,7 +163,7 @@ $("#save-btn").on("click", function () {
 			dataType: 'JSON',
 			success: function(resultData) {
 				alert("Contact has been saved.");
-				window.location.href="ContactSearch.html";
+				window.location.href="views/ContactSearch.html";
 			},
 			error: function(resultData) {
 				alert("An error has occured.");

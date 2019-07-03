@@ -104,5 +104,5 @@ $("#save-btn").on("click", function () {
 });
 function returnToAddEdit(data){
 	console.log(contactID);
-	window.location.href="ContactAddEdit.html?id=" + contactID;
+	window.location.href="views/ContactAddEdit.html?id=" + contactID;
 }

@@ -18,12 +18,12 @@ $("#search-btn").on("click", function () {
 
 //Defines behavior for add button that redirects to new contact page
 $("#add-btn").on("click", function () {
-	window.location.href="ContactAddEdit.html?id=0";
+	window.location.href="views/ContactAddEdit.html?id=0";
 });
 
 //Redirects to Contact add + edit page with the id of selected contact
 function editContact(id){
-	window.location.href="ContactAddEdit.html?id=" + id;
+	window.location.href="views/ContactAddEdit.html?id=" + id;
 }
 
 //Method that takes searchTerms and makes POST call to server for that data
