@@ -1,4 +1,4 @@
-// Gets all info that is needed fromt the search addres.
+// Gets all info that is needed fromt the search addres
 var qs = location.search;
 var info = qs.split("=");
 var contactinfoID = info[1].slice(0,4);
@@ -104,5 +104,5 @@ $("#save-btn").on("click", function () {
 });
 function returnToAddEdit(data){
 	console.log(contactID);
-	window.location.href="views/ContactAddEdit.html?id=" + contactID;
+	window.location.href="ContactAddEdit.html?id=" + contactID;
 }
