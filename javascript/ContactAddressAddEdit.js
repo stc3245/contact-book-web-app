@@ -1,21 +1,21 @@
 var qs = location.search;
-var stuff = qs.split("=");
+var info = qs.split("=");
 
-var ID = stuff[1].slice(0,3);
-if (ID[0] == 0) {
-	ID = 0;
+var contactInfoID = info[1].slice(0,3);
+if (contactInfoID[0] == 0) {
+	contactInfoID = 0;
 }
-var contactID = stuff[2];
+var contactID = info[2];
 
 $( document ).ready(function() {
-	if(ID == 0){
-		displayBoxes(ID);
+	if(contactInfoID == 0){
+		displayBoxes(contactInfoID);
 	}
 	else{
 		$.ajax({
 			type: 'POST',
 			url: "http://contactbookapi.sihs.dev2.edsiohio.com/api/contact/addressbyid",
-			data: ID,
+			data: contactInfoID,
 			contentType: 'application/json',
 			dataType: "JSON",
 			success: function(resultData) {
@@ -65,7 +65,7 @@ $("#Cancel-btn").on("click", function () {
 	$.ajax({
 			type: 'POST',
 			url: "http://contactbookapi.sihs.dev2.edsiohio.com/api/contact/AddressById",
-			data: ID,
+			data: contactInfoID,
 			contentType: 'application/json',
 			dataType: "JSON",
 			success: function(resultData) {
@@ -79,7 +79,7 @@ $("#Cancel-btn").on("click", function () {
 });
 $("#save-btn").on("click", function () {
 	var saveContactInfo = {
-	  "Id": ID,
+	  "Id": contactInfoID,
 	  "AddressLine1":  document.getElementById("AddressLine1").value,
 	  "AddressLine2": document.getElementById("AddressLine2").value,
 	  "AddressLine3": document.getElementById("AddressLine3").value,
@@ -105,7 +105,7 @@ $("#save-btn").on("click", function () {
 			$.ajax({
 					type: 'POST',
 					url: "http://contactbookapi.sihs.dev2.edsiohio.com/api/contact/AddressById",
-					data: ID,
+					data: contactInfoID,
 					contentType: 'application/json',
 					dataType: "JSON",
 					success: function(resultData) {

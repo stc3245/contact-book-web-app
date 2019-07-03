@@ -1,15 +1,13 @@
 var $;
 
+//Defines object that holds values for name and phone number being searched
 var searchTerms = {
-
-Name: $("#Name").val(),
-Number: $("#Phone").val()
-
+  Name: $("#Name").val(),
+  Number: $("#Phone").val()
 };
 
+//Defines behavior for when search button is pressed.
 $("#search-btn").on("click", function () {
-
-    // TODO: Add search fields to html, and use jQuery to get values from them and put them in the searchTerms object.
     var searchTerms = {
 
 		Name: $("#Name").val(),
@@ -18,6 +16,17 @@ $("#search-btn").on("click", function () {
 	contactSearch(searchTerms);
 });
 
+//Defines behavior for add button that redirects to new contact page
+$("#add-btn").on("click", function () {
+	window.location.href="ContactAddEdit.html?id=0";
+});
+
+//Redirects to Contact add + edit page with the id of selected contact
+function editContact(id){
+	window.location.href="ContactAddEdit.html?id=" + id;
+}
+
+//Method that takes searchTerms and makes POST call to server for that data
 function contactSearch (searchTerms) {
 
     $.ajax({
@@ -35,20 +44,18 @@ function contactSearch (searchTerms) {
     });
 }
 
-function editContact(id){
-	window.location.href="ContactAddEdit.html?id=" + id;
-}
+//Makes POST call to server to delete the contact of the selected id
 function deleteContact(id){
-	var contactId = id;
+
 	$.ajax({
         type: 'POST',
         url: "http://contactbookapi.sihs.dev2.edsiohio.com/api/contact/DeletePersonById",
-        data: JSON.stringify(contactId),
+        data: JSON.stringify(id),
 		contentType: 'application/json',
         dataType: "JSON",
         success: function(resultData) {
             alert("Contact deleted!");
-						console.log(contactId);
+						console.log(id);
 						contactSearch(searchTerms);
         },
         error: function(resultData) {
@@ -56,15 +63,14 @@ function deleteContact(id){
         }
     });
 }
-$("#add-btn").on("click", function () {
-	window.location.href="ContactAddEdit.html?id=0";
-});
 
+// Displays data that is returned from contact search call
 function displayData (data) {
 
 	//Clears data from rows
 	$("#contact-list").html('');
 
+  //Loops through all contacts returned
 	for(i = 0; i < data.length; i++){
 		$("#contact-list")
 			.append(

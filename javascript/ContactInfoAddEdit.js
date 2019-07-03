@@ -1,15 +1,12 @@
-
+// Gets all info that is needed fromt the search addres.
 var qs = location.search;
-var stuff = qs.split("=");
-var contactinfoID = stuff[1].slice(0,4);
+var info = qs.split("=");
+var contactinfoID = info[1].slice(0,4);
+var contactID = info[2];
+
 if (contactinfoID[0] == 0) {
 	contactinfoID = 0;
 }
-var contactID = stuff[2];
-
-console.log(contactinfoID);
-
-console.log(contactID);
 
 $( document ).ready(function() {
 	if(contactinfoID == 0){

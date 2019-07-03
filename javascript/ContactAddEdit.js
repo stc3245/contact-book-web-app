@@ -1,6 +1,8 @@
+// takes the search address and slices of the contact id of contact
 var qs = location.search;
 var userID = qs.slice(4);
 
+// If a contact id is passed in, load data. If not, load empty boxes.
 $(document).ready(function() {
 
 	if(userID == 0){
@@ -54,10 +56,12 @@ $(document).ready(function() {
 	}
 });
 
+// Defines cancel button behavior which returns to contact search page
 $("#Cancel-btn").on("click", function () {
 	window.location.href="ContactSearch.html";
 });
 
+// Defines add contact info behavior which redirects if there is a contact id
 $("#addcontactinfo-btn").on("click", function () {
 	if(userID == 0){
 		alert("You must first save a contact before adding more contact information");
@@ -67,6 +71,7 @@ $("#addcontactinfo-btn").on("click", function () {
 	}
 });
 
+// Defines add address behavior which redirects if there is a contact id
 $("#addcontactaddress-btn").on("click", function () {
 	if(userID == 0){
 		alert("You must first save a contact before adding an address");
@@ -76,14 +81,17 @@ $("#addcontactaddress-btn").on("click", function () {
 	}
 });
 
+// Defines edit contact info behavior which redirects to edit page
 function editContactInfo(id){
 	window.location.href="ContactInfoAddEdit.html?id=" + id + "?userID="+ userID;
 }
 
+// Defines edit addres behavior which redirects to edit page
 function editContactAddress(id){
 	window.location.href="ContactAddressAddEdit.html?id=" + id + "?userID="+userID;
 }
 
+//Makes POST call to server that deletes the contact info of the selected id
 function deleteContactInfo(contactInfoid){
 
 	$.ajax({
@@ -94,7 +102,6 @@ function deleteContactInfo(contactInfoid){
         dataType: "JSON",
         success: function(resultData) {
             alert("Contact Info deleted!");
-						console.log(contactInfoid);
 						window.location.href="ContactAddEdit.html?id=" + userID;
         },
         error: function(resultData) {
@@ -102,6 +109,8 @@ function deleteContactInfo(contactInfoid){
         }
     });
 }
+
+//Makes POST call to server that deletes the address info of the selected id
 function deleteContactAddress(Addressid){
 	$.ajax({
         type: 'POST',
@@ -112,9 +121,6 @@ function deleteContactAddress(Addressid){
         success: function(resultData) {
             alert("Address deleted!");
 						window.location.href="ContactAddEdit.html?id=" + userID;
-
-
-			console.log(Addressid);
         },
         error: function(resultData) {
             alert("An error has occured.");
@@ -122,17 +128,21 @@ function deleteContactAddress(Addressid){
     });
 }
 
+//Defines behavior for save button that saves current contact
 $("#save-btn").on("click", function () {
 	var firstName = document.getElementById("FirstName").value;
 	var lastName = document.getElementById("LastName").value;
 	var DOB = document.getElementById("DOB").value
 
+	// Checks to see if date is valid
 	var date_regex = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/;
 	var isValidDate = date_regex.test(DOB);
 
+	// Makes sure all fields filled in
 	if (!firstName || !lastName || !DOB) {
 		alert("Please fill in all text fields before proceeding")
 	}
+	// Alerts if date invalid
 	else if(!isValidDate){
 		alert("Please fill in a valid date (format: MM/DD/YYYY)")
 	}
@@ -162,6 +172,7 @@ $("#save-btn").on("click", function () {
 	}
 });
 
+// Gets the current date for default of new contacts
 function getDate(){
 	var today = new Date();
 	var dd = today.getDate();
@@ -180,16 +191,28 @@ function getDate(){
 	return today;
 }
 
+// Displays current info for selected contact id
 function displayData(data) {
+	//Make sure date displays correctly
+	var date = data.DOB.split("/");
+	if(date[0].length == 1){
+		date[0] = '0' + date[0];
+	}
+	if(date[1].length == 1){
+		date[1] = '0' + date[1];
+	}
+	var date = date[0] + "/" + date[1] +"/"+ date[2];
 	$("#text-boxes")
 		.append(
 		'<div class = "row" style = "text-align: center;">'+
 			'<div class="col-md-4">First Name: <input type = "text" id = "FirstName" value = "'+ data.FirstName +'"></div>'+
 			'<div class="col-md-4">Last Name: <input type = "text" id = "LastName" value ="'+ data.LastName +'"></div>'+
-			'<div class="col-md-4"> Date of Birth: <input type = "text" id = "DOB" value ="'+ data.DOB +'"></div>'+
+			'<div class="col-md-4"> Date of Birth: <input type = "text" id = "DOB" value ="'+ date +'"></div>'+
 		'</div>'
 	)
 }
+
+// Displays empty boxes for new contact
 function displayBoxes(id){
 	$("#text-boxes")
 		.append(
@@ -200,6 +223,8 @@ function displayBoxes(id){
 		'</div>'
 	)
 }
+
+// Displays contact info data of contact if there is any
 function displayContactInfoData(data){
 	for(i = 0; i < data.length; i++){
 		$("#contact-info")
@@ -213,6 +238,8 @@ function displayContactInfoData(data){
 		)
 	}
 }
+
+// Displays address data of contact if there is any
 function displayAddressInfo(data){
 	for(i = 0; i < data.length; i++){
 		$("#address-info")
